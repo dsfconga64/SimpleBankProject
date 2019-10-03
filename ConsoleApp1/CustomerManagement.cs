@@ -16,8 +16,23 @@ namespace ConsoleApp1
 
         public void Create(Customer customer)
         {
+            try
+            {
+                var c = crudCustomer.Retrieve<Customer>(customer);
 
-            crudCustomer.Create(customer);
+                if (c != null)
+                {
+                    
+                }
+
+                crudCustomer.Create(customer);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+           
 
         }
 

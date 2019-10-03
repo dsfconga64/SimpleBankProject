@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoreApi
 {
-    public class Class1
+    public class BaseManager
     {
     }
 }
