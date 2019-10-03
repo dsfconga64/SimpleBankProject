@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29230.47
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandBoxTest", "ConsoleApp1\SandBoxTest.csproj", "{C24DA9D4-DC7D-45C9-80D3-205DD2F41E31}"
 EndProject
@@ -58,7 +58,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{C24DA9D4-DC7D-45C9-80D3-205DD2F41E31} = {C3E04265-DDDD-4033-983F-A9C4DB0EEEF2}
 		{AFB5CF7A-16C4-49F4-A665-AA53EF658A6D} = {A4FB592C-BD8C-4B3F-A299-B740C15DD493}
 		{0DD63AB0-EC91-4F7D-ACF8-13B4DD436820} = {EA32F448-CC52-4EE9-B557-9B7A7A766AC5}
 		{6EAEE895-7994-474E-A6FE-B86C69A0D555} = {C3E04265-DDDD-4033-983F-A9C4DB0EEEF2}
