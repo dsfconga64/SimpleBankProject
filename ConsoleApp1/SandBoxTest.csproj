@@ -93,6 +93,10 @@
       <Project>{0dd63ab0-ec91-4f7d-acf8-13b4dd436820}</Project>
       <Name>Entities-POJO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Exceptions\Exceptions.csproj">
+      <Project>{9B4E2A8B-F8A2-4569-983E-1CA65AA98359}</Project>
+      <Name>Exceptions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

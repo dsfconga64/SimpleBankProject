@@ -1,5 +1,6 @@
 ﻿using DataAcess.Crud;
 using Entities_POJO;
+using Exceptions;
 using System.Collections.Generic;
 
 
@@ -22,10 +23,18 @@ namespace ConsoleApp1
 
                 if (c != null)
                 {
-                    
+                    throw new BusinessException(3);
+                }
+                if (customer.Age >= 18)
+                {
+                    crudCustomer.Create(customer);
+                }
+                else
+                {
+                    throw new BusinessException(2);
                 }
 
-                crudCustomer.Create(customer);
+               
             }
             catch (System.Exception)
             {
