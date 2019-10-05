@@ -51,23 +51,77 @@ namespace WebApi.Controllers
             catch (BusinessException bex)
             {
 
-                return InternalServerError(new Exception(bex.ExceptionId + ""+ bex.AppMessage.Message));
+                return InternalServerError(new Exception(bex.ExceptionId +"--"+ bex.AppMessage.Message));
             }
         }
 
         // POST: api/Customer
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post(Customer customer)
         {
+            try
+            {
+                var cxMng = new CustomerManagement();
+                cxMng.Create(customer);
+
+                apiResponse = new ApiResponse();
+
+                apiResponse.Message = "Customer created";
+
+                return Ok(apiResponse);
+
+            }
+            catch (BusinessException bex)
+            {
+
+                return InternalServerError(new Exception(bex.ExceptionId +"--"+bex.AppMessage.Message));
+            }
         }
 
-        // PUT: api/Customer/5
-        public void Put(int id, [FromBody]string value)
+        //PUT: api/Customer/5
+        public IHttpActionResult Put(Customer customer)
         {
+            try
+            {
+                var cxMng = new CustomerManagement();
+                cxMng.Update(customer);
+                apiResponse = new ApiResponse();
+
+                apiResponse.Message = "Customer was updated";
+
+                return Ok(apiResponse);
+            }
+            catch (BusinessException bex)
+            {
+
+                return InternalServerError(new Exception(bex.ExceptionId + "--" + bex.AppMessage.Message));
+            }
         }
 
-        // DELETE: api/Customer/5
-        public void Delete(int id)
+        //// DELETE: api/Customer/5
+        public IHttpActionResult Delete(string id)
         {
+            try
+            {
+                var cxMng = new CustomerManagement();
+
+                var customer = new Customer
+                {
+                    Id = id
+                };
+
+                cxMng.Delete(customer);
+
+                apiResponse = new ApiResponse();
+
+                apiResponse.Message = "Customer Deleted";
+
+                return Ok(apiResponse);
+            }
+            catch (BusinessException bex)
+            {
+
+                return InternalServerError(new Exception(bex.ExceptionId + "--" + bex.AppMessage.Message));
+            }
         }
     }
 }

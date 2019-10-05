@@ -1,6 +1,7 @@
 ﻿using DataAcess.Crud;
 using Entities_POJO;
 using Exceptions;
+using System;
 using System.Collections.Generic;
 
 
@@ -36,10 +37,10 @@ namespace ConsoleApp1
 
                
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                ExceptionManager.GetInstance().Process(ex);
             }
            
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Exceptions
 {
-    class ExceptionManager:Exception
+    public class ExceptionManager:Exception
     {
         public string PATH = @"C:\Users\David Solano\Documents\Proyecto #2\cenfo_proyecto_2_2019\Capa API\Components\Exceptions";
 
