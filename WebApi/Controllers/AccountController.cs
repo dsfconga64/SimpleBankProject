@@ -1,39 +1,133 @@
-﻿using System;
+﻿using ConsoleApp1;
+using Entities_POJO;
+using Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApi.Models;
 
 namespace WebApi.Controllers
 {
     public class AccountController : ApiController
     {
+        ApiResponse apiResponse = new ApiResponse();
         // GET: api/Account
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var accMng = new AccountManagement();
+                apiResponse = new ApiResponse();
+
+                apiResponse.Data = accMng.RetrieveAll();
+
+                return Ok(apiResponse);
+
+            }
+            catch (BusinessException bex)
+            {
+
+                return InternalServerError(new Exception(bex.ExceptionId + "--" + bex.AppMessage.Message));
+            }
         }
 
         // GET: api/Account/5
-        public string Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            try
+            {
+                var accMng = new AccountManagement();
+
+                var account = new Account
+                {
+                    AccountId = id
+                };
+
+                account = accMng.RetrieveById(account);
+
+                apiResponse = new ApiResponse();
+
+                apiResponse.Data = account;
+
+
+                return Ok(apiResponse);
+            }
+            catch (BusinessException bex)
+            {
+
+                return InternalServerError(new Exception(bex.ExceptionId + "--" + bex.AppMessage.Message));
+            }
         }
 
         // POST: api/Account
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post(Account account)
         {
+            try
+            {
+                var accMng = new AccountManagement();
+
+                accMng.Create(account);
+
+                apiResponse = new ApiResponse();
+
+                apiResponse.Message = "Account Created";
+
+                return Ok(apiResponse);
+            }
+            catch (BusinessException bex)
+            {
+
+                return InternalServerError(new Exception(bex.ExceptionId + "--" + bex.AppMessage.Message));
+            }
         }
 
         // PUT: api/Account/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(Account account)
         {
+            try
+            {
+                var accMng = new AccountManagement();
+
+                accMng.Update(account);
+
+                apiResponse.Message = "Account updated";
+
+                return Ok(apiResponse);
+            }
+            catch (BusinessException bex)
+            {
+                return InternalServerError(new Exception(bex.ExceptionId + "--" + bex.AppMessage.Message));
+            }
         }
 
         // DELETE: api/Account/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
+            try
+            {
+                var accMng = new AccountManagement();
+
+                var account = new Account
+                {
+                    AccountId = id
+                };
+
+                accMng.Update(account);
+
+                apiResponse = new ApiResponse();
+
+                apiResponse.Message = "Customer updated";
+
+                return Ok(apiResponse);
+            }
+            catch (BusinessException bex)
+            {
+                return InternalServerError(new Exception(bex.ExceptionId + "--" + bex.AppMessage.Message));
+
+            }
         }
     }
 }
