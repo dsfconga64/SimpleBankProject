@@ -1,18 +1,35 @@
-﻿using System;
+﻿using ConsoleApp1;
+using Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApi.Models;
 
 namespace WebApi.Controllers
 {
     public class CreditController : ApiController
     {
-        // GET: api/Credit
-        public IEnumerable<string> Get()
+        ApiResponse apiResponse = new ApiResponse();
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var credMng = new CreditMangement();
+                var apiResponse = new ApiResponse();
+
+                apiResponse.Data = credMng.RetrieveAll();
+
+                return Ok(apiResponse);
+
+            }
+            catch (BusinessException bex)
+            {
+
+                return InternalServerError(new Exception(bex.ExceptionId + "--" + bex.AppMessage.Message));
+            }
         }
 
         // GET: api/Credit/5
