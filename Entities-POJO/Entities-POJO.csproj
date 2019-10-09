@@ -56,6 +56,7 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Credit.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="ObjectDumper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

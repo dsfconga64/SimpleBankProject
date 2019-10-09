@@ -57,6 +57,7 @@
     <Compile Include="Crud\CreditCrudFactory.cs" />
     <Compile Include="Crud\CrudFactory.cs" />
     <Compile Include="Crud\CustomerCrudFactory.cs" />
+    <Compile Include="Crud\LocationCrudFactory.cs" />
     <Compile Include="Dao\SqlDao.cs" />
     <Compile Include="Dao\SqlOperation.cs" />
     <Compile Include="Mapper\AccountMapper.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Mapper\EntityMapper.cs" />
     <Compile Include="Mapper\IObjectMapper.cs" />
     <Compile Include="Mapper\ISqlStatements.cs" />
+    <Compile Include="Mapper\LocationMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
