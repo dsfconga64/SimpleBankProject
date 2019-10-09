@@ -1,4 +1,5 @@
 ﻿using ConsoleApp1;
+using Entities_POJO;
 using Exceptions;
 using System;
 using System.Collections.Generic;
@@ -33,24 +34,98 @@ namespace WebApi.Controllers
         }
 
         // GET: api/Credit/5
-        public string Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            try
+            {
+                var credMng = new CreditMangement();
+                var apiResponse = new ApiResponse();
+
+                var credit = new Credit
+                {
+                    CreditId = id
+                };
+
+                credit = credMng.RetrieveById(credit);
+
+                apiResponse.Data = credit;
+
+                return Ok(apiResponse);
+
+            }
+            catch (BusinessException bex)
+            {
+
+                return InternalServerError(new Exception(bex.ExceptionId + "--" + bex.AppMessage.Message));
+            }
         }
 
         // POST: api/Credit
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post(Credit credit)
         {
+            try
+            {
+                var credMng = new CreditMangement();
+
+                credMng.Create(credit);
+
+                apiResponse = new ApiResponse();
+
+                apiResponse.Message = "Credit created";
+
+                return Ok(apiResponse);
+            }
+            catch (BusinessException bex)
+            {
+
+                return InternalServerError(new Exception(bex.ExceptionId + "--" + bex.AppMessage.Message));
+            }
         }
 
         // PUT: api/Credit/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(Credit credit)
         {
+            try
+            {
+                var credMng = new CreditMangement();
+
+                credMng.Update(credit);
+
+                apiResponse.Message = "Credit was updated";
+
+                return Ok(apiResponse);
+
+            }
+            catch (BusinessException bex)
+            {
+
+                return InternalServerError(new Exception(bex.ExceptionId + "--" + bex.AppMessage.Message));
+            }
         }
 
         // DELETE: api/Credit/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
+            try
+            {
+                var credMng = new CreditMangement();
+
+                var credit = new Credit
+                {
+                    CreditId = id
+                };
+
+                credMng.Delete(credit);
+
+                apiResponse.Message = "Credit deleted";
+
+                return Ok(apiResponse);
+            }
+            catch (BusinessException bex)
+            {
+
+                return InternalServerError(new Exception(bex.ExceptionId + "--" + bex.AppMessage.Message));
+            }
         }
     }
 }

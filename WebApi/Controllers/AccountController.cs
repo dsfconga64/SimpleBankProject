@@ -115,11 +115,11 @@ namespace WebApi.Controllers
                     AccountId = id
                 };
 
-                accMng.Update(account);
+                accMng.Delete(account);
 
                 apiResponse = new ApiResponse();
 
-                apiResponse.Message = "Customer updated";
+                apiResponse.Message = "Account Deleted";
 
                 return Ok(apiResponse);
             }
