@@ -77,6 +77,7 @@
     <Compile Include="AddressManagement.cs" />
     <Compile Include="CreditMangement.cs" />
     <Compile Include="CustomerManagement.cs" />
+    <Compile Include="LocationManagement.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
