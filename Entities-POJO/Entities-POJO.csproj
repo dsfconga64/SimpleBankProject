@@ -58,6 +58,7 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="ObjectDumper.cs" />
+    <Compile Include="OptionList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
